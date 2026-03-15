@@ -4,7 +4,7 @@ from huggingface_hub import hf_hub_download
 import joblib
 
 # Download and load the model
-model_path = hf_hub_download(repo_id="FREEDOMA1/PIMA-Diabetes-Prediction", filename="best_pima_diabetes_model_v1.joblib")                                       # enter the Hugging Face username here
+model_path = hf_hub_download(repo_id="FREEDOMA1/PIMA-Diabetes-Prediction", filename="best_pima_diabetes_model_v1.joblib")
 model = joblib.load(model_path)
 
 # Streamlit UI for Machine Failure Prediction
@@ -25,7 +25,7 @@ pedi = st.number_input("Diabetes Pedigree Function", min_value=0.0, max_value=2.
 age = st.number_input("Age", min_value=1, max_value=120, value=30)
 
 # Assemble input into DataFrame
-input_data = pd.DataFrame({
+input_data = pd.DataFrame([{
     'preg': preg,
     'plas': plas,
     'pres': pres,
@@ -34,7 +34,7 @@ input_data = pd.DataFrame({
     'mass': mass,
     'pedi': pedi,
     'age': age
-})
+}])
 
 # Prediction button
 if st.button("Predict Diabetes"):

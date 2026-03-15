@@ -9,7 +9,7 @@ model = joblib.load(model_path)
 
 # Streamlit UI for Machine Failure Prediction
 st.title("PIMA Diabetes Prediction App")
-st.write(""""This application predicts the likelihood of a patient having diabetes based on their health attributes.Please enter the sensor and configuration data below to get a prediction."""")
+st.write("""This application predicts the likelihood of a patient having diabetes based on their health attributes.Please enter the sensor and configuration data below to get a prediction."""")
 
 # User inputs
 preg = st.number_input("Number of Pregnancies", min_value=0, max_value=20, value=1)
