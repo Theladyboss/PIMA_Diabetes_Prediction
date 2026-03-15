@@ -1,11 +1,15 @@
-from huggingface_hub import HfApi, create_repo
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
+from huggingface_hub import HfApi, create_repo
 import os
 
-api = HfApi(token=os.getenv("HF_TOKEN"))
-repo_id = "FREEDOMA1/PIMA-Diabetes-Prediction"
-repo_type = "space"
 
+repo_id = "PASTE_YOUR_HUGGING_FACE_USER_NAME/PIMA-Diabetes-Prediction"                         # enter the Hugging Face username here
+repo_type = "dataset"
+
+# Initialize API client
+api = HfApi(token=os.getenv("HF_TOKEN"))
+
+# Step 1: Check if the space exists
 try:
     api.repo_info(repo_id=repo_id, repo_type=repo_type)
     print(f"Space '{repo_id}' already exists. Using it.")
@@ -15,9 +19,7 @@ except RepositoryNotFoundError:
     print(f"Space '{repo_id}' created.")
 
 api.upload_folder(
-    folder_path="deployment",  # Corrected path
-    repo_id=repo_id,    # enter the Hugging Face username here
+    folder_path="self_paced_courses_1_mlops/data",
+    repo_id=repo_id,
     repo_type=repo_type,
-    path_in_repo="",                          # optional: subfolder path inside the repo
-    create_pr=True                            # Add this to explicitly create a Pull Request
 )
