@@ -4,15 +4,15 @@ from huggingface_hub import hf_hub_download
 import joblib
 
 # Download and load the model
-model_path = hf_hub_download(repo_id="FREEDOMA1/PIMA-Diabetes-Prediction", filename="best_pima_diabetes_model_v1.joblib")                                       # enter the Hugging Face username here
+model_path = hf_hub_download(repo_id="FREEDOMA1/PIMA-Diabetes-Prediction", filename="best_pima_diabetes_model_v1.joblib")
 model = joblib.load(model_path)
 
 # Streamlit UI for Machine Failure Prediction
 st.title("PIMA Diabetes Prediction App")
-st.write("""
+st.write(""""
 This application predicts the likelihood of a patient having diabetes based on their health attributes.
 Please enter the sensor and configuration data below to get a prediction.
-""")
+"""")
 
 # User inputs
 preg = st.number_input("Number of Pregnancies", min_value=0, max_value=20, value=1)
